@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <img src="{{asset('storage/imgs/gervinho.jpg')}}" style="width:60px;height:80px" alt="">
+                <img src="{{asset('storage/imgs/gervinho.jpg')}}" class="img-thumbnail mr-3" width="100px" alt="">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'laravel') }}
                 </a>

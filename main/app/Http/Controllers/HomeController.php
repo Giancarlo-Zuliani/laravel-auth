@@ -18,7 +18,8 @@ class HomeController extends Controller
         $request -> validate([
             'icon' => 'required|file'
         ]);
-
+        $this -> deleteUserIcon();
+        $this -> clearUserIcon();
         $image = $request -> file('icon');
         $ext = $image -> getClientOriginalExtension();
         $fileName = rand(100000 ,999999) . '_' . time();
@@ -29,5 +30,19 @@ class HomeController extends Controller
         $user -> save();
         
         return redirect() -> back();
+    }
+    public function clearUserIcon(){
+        $this -> deleteUserIcon();
+        $icon = Auth::user();
+        $icon -> icon = null;
+        $icon -> save();
+        return redirect() -> back();
+    }
+    private function deleteUserIcon(){
+         $user = Auth::user();
+         $fileName = $user -> icon;
+         $file = storage_path('app\public\icon/' .$fileName);
+         File::delete($file);
+          
     }
 }

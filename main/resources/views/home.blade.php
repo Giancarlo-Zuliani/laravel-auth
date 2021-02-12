@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
 
-             <div class="card-header">user icon update</div>
+             <div class="card-header">USER ICON UPDATE</div>
 
                 <div class="card-body">
                     @if(session('status'))
@@ -18,21 +18,27 @@
                        
                     @csrf
                     @method('POST')
-                        <input name="icon" type="file">
+                        <input name="icon" type="file" class="mb-4 form-control btn-primary">
                         <br>
-                        <input  type="submit" value="submit">            
+                        <input  type="submit" class="btn btn-primary float-left" value="upload your avatar">            
                     </form>
+                    <a href="{{route('clear-icon')}}" class="btn btn-danger float-right">Remove yuor avatar</a>
                 </div>
             </div>
             <br><br>
             <div class="card">
 
                 <div class="card-header">user icon </div>
-   
+                @if (Auth::user() -> icon)
                    <div class="card-body">
-                      <img src="{{asset('storage/icon/' . Auth::user() -> icon )}}" style="width:150px;height:150px" alt="">
+                      <img class="img-thumbnail" src="{{asset('storage/icon/' . Auth::user() -> icon )}}" style="width:150px;height:150px" alt="">
                    </div>
                </div>
+               @else
+                <div class="card-body">
+                    <img class="img-thumbnail" src="{{asset('storage/imgs/unknow.jpg')}}" style="width:150px;height:150px" alt="">
+                </div>
+               @endif
         </div>
     </div>
 </div>
