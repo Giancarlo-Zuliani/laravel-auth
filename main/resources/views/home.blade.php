@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
 
-                <div class="card-header">user icon update</div>
+             <div class="card-header">user icon update</div>
 
                 <div class="card-body">
                     @if(session('status'))
@@ -24,6 +24,15 @@
                     </form>
                 </div>
             </div>
+            <br><br>
+            <div class="card">
+
+                <div class="card-header">user icon </div>
+   
+                   <div class="card-body">
+                      <img src="{{asset('storage/icon/' . Auth::user() -> icon )}}" style="width:150px;height:150px" alt="">
+                   </div>
+               </div>
         </div>
     </div>
 </div>
